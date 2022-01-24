@@ -49,7 +49,7 @@ extension RequestItemsType: EndPointType {
     var version: String {
         return ""
     }
-    
+    // MARK: - Since we do not have base url and url end points, supplied whole url.
     var path: String {
         switch self {
         case .events(_):
