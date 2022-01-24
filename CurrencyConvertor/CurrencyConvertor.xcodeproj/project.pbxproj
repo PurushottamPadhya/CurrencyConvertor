@@ -34,6 +34,9 @@
 		EE81C4AE279EB2DE0041B46C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE81C4AD279EB2DE0041B46C /* Constants.swift */; };
 		EE81C4B0279EB3D00041B46C /* CurrencyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE81C4AF279EB3D00041B46C /* CurrencyModel.swift */; };
 		EE81C4B3279EB8280041B46C /* CurrencyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE81C4B2279EB8280041B46C /* CurrencyViewModel.swift */; };
+		EE81C4B5279EF7EE0041B46C /* CurrencyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE81C4B4279EF7EE0041B46C /* CurrencyViewController.swift */; };
+		EE81C4B7279F3EA20041B46C /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE81C4B6279F3EA20041B46C /* Color.swift */; };
+		EE81C4B9279F3EDB0041B46C /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE81C4B8279F3EDB0041B46C /* UIColorExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,6 +94,9 @@
 		EE81C4AD279EB2DE0041B46C /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		EE81C4AF279EB3D00041B46C /* CurrencyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyModel.swift; sourceTree = "<group>"; };
 		EE81C4B2279EB8280041B46C /* CurrencyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyViewModel.swift; sourceTree = "<group>"; };
+		EE81C4B4279EF7EE0041B46C /* CurrencyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyViewController.swift; sourceTree = "<group>"; };
+		EE81C4B6279F3EA20041B46C /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		EE81C4B8279F3EDB0041B46C /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -206,6 +212,7 @@
 			isa = PBXGroup;
 			children = (
 				EE81C48B279E99130041B46C /* UIViewController.swift */,
+				EE81C4B8279F3EDB0041B46C /* UIColorExtension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -222,6 +229,7 @@
 			isa = PBXGroup;
 			children = (
 				EE81C45E279E905A0041B46C /* ViewController.swift */,
+				EE81C4B4279EF7EE0041B46C /* CurrencyViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -280,6 +288,7 @@
 			isa = PBXGroup;
 			children = (
 				EE81C4AD279EB2DE0041B46C /* Constants.swift */,
+				EE81C4B6279F3EA20041B46C /* Color.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -532,17 +541,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				EE81C4A9279EB2480041B46C /* DynamicAsync.swift in Sources */,
+				EE81C4B5279EF7EE0041B46C /* CurrencyViewController.swift in Sources */,
 				EE81C49A279E9B2D0041B46C /* ApiManager.swift in Sources */,
 				EE81C49C279E9B850041B46C /* ApiManagerRetrier.swift in Sources */,
 				EE81C45F279E905A0041B46C /* ViewController.swift in Sources */,
 				EE81C491279E9A0E0041B46C /* AlertMessage.swift in Sources */,
 				EE81C4AB279EB2B50041B46C /* Utils.swift in Sources */,
 				EE81C45B279E905A0041B46C /* AppDelegate.swift in Sources */,
+				EE81C4B9279F3EDB0041B46C /* UIColorExtension.swift in Sources */,
 				EE81C4B3279EB8280041B46C /* CurrencyViewModel.swift in Sources */,
 				EE81C4AE279EB2DE0041B46C /* Constants.swift in Sources */,
 				EE81C4A3279EB1620041B46C /* ParameterEncoding.swift in Sources */,
 				EE81C494279E9A5E0041B46C /* NetworkError.swift in Sources */,
 				EE81C4A1279EAE990041B46C /* RequestItems.swift in Sources */,
+				EE81C4B7279F3EA20041B46C /* Color.swift in Sources */,
 				EE81C4A7279EB2220041B46C /* DynamicArray.swift in Sources */,
 				EE81C48C279E99130041B46C /* UIViewController.swift in Sources */,
 				EE81C4A5279EB1EB0041B46C /* Dynamic.swift in Sources */,

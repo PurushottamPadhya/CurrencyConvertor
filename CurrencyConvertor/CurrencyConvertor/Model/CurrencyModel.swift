@@ -109,7 +109,7 @@ enum CurrencyModel{
         let xau: Xau
         let cnh: Cnh
 
-        enum CodingKeys: String, CodingKey {
+        enum CodingKeys: String, CodingKey, CaseIterable {
             case usd = "USD"
             case eur = "EUR"
             case gbp = "GBP"
@@ -150,6 +150,9 @@ enum CurrencyModel{
             case zar = "ZAR"
             case xau = "XAU"
             case cnh = "CNH"
+        }
+        var allKeys: [String] {
+            CodingKeys.allCases.map { $0.stringValue }
         }
     }
 

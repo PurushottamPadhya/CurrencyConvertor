@@ -10,19 +10,20 @@ import Alamofire
 protocol CurrencyViewModelProtocol {
     var alertMessage: Dynamic<AlertMessage> { get set }
     var isLoaderHidden: Dynamic<Bool> { get set }
-    var user: Dynamic<CurrencyModel.CurrencyRate?> { get set }
+    var rates: Dynamic<CurrencyModel.CurrencyRate?> { get set }
     
     func getRates()
     func failTest()
 }
 
-class APIDemoViewModel: NSObject, CurrencyViewModelProtocol {
+class APICurrencyViewModel: NSObject, CurrencyViewModelProtocol {
     
     // MARK: - APIDemoViewModelProtocol
     
     var alertMessage: Dynamic<AlertMessage> = Dynamic(AlertMessage(title: "", body: ""))
     var isLoaderHidden: Dynamic<Bool> = Dynamic(true)
-    var user: Dynamic<CurrencyModel.CurrencyRate?> = Dynamic(nil)
+    var rates: Dynamic<CurrencyModel.CurrencyRate?> = Dynamic(nil)
+    
     
     // MARK: - Vars & Lets
     
@@ -35,8 +36,11 @@ class APIDemoViewModel: NSObject, CurrencyViewModelProtocol {
         self.apiManager.call(type: RequestItemsType.getRates) { (res: Swift.Result<CurrencyModel.CurrencyRate, AlertMessage>) in
             self.isLoaderHidden.value = true
             switch res {
-            case .success(let user):
-                self.user.value = user
+            case .success(let rate):
+                self.rates.value = rate
+//                self.products.value = rate.data.brands.wbc.portfolios.fx.products
+//                self.productList = rate.data.brands.wbc.portfolios.fx.products
+
                 break
             case .failure(let message):
                 self.alertMessage.value = message
@@ -50,8 +54,8 @@ class APIDemoViewModel: NSObject, CurrencyViewModelProtocol {
         self.apiManager.call(type: RequestItemsType.fail) { (res: Swift.Result<CurrencyModel.CurrencyRate, AlertMessage>) in
             self.isLoaderHidden.value = true
             switch res {
-            case .success(let user):
-                self.user.value = user
+            case .success(let rate):
+                self.rates.value = rate
                 break
             case .failure(let message):
                 self.alertMessage.value = message
