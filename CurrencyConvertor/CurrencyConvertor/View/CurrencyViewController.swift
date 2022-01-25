@@ -26,7 +26,9 @@ class CurrencyViewController: UIViewController {
     @IBOutlet weak var convertBtn: UIButton!
     
     let dropDown = DropDown()
-    
+    var selectedItem:String?
+    var selectedItemRate: Double = 0.0
+    var selectedItemCode: String?
     var viewModel: CurrencyViewModelProtocol?
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,50 +47,40 @@ class CurrencyViewController: UIViewController {
         })
         self.viewModel?.rates.bind({ [weak self] in
             if let rate = $0 {
-//                print(rate.data.brands.wbc.portfolios.fx.products.usd.productID)
-                let p_id = rate.data.brands.wbc.portfolios.fx.products.usd.productID
-                let buyingRate = rate.data.brands.wbc.portfolios.fx.products.usd.rates.usd.buyTC
-                let sellingRate = rate.data.brands.wbc.portfolios.fx.products.usd.productID
-                let test = rate.data.brands.wbc.portfolios.fx.products.usd.productID
-                self?.currencyFromLabel.text = "\(p_id)"
-                self?.currencyToOutputLabel.text = "\(test)"
+                print(rate.data.brands.wbc.portfolios.fx.products.usd.productID)
+//                let p_id = rate.data.brands.wbc.portfolios.fx.products.usd.productID
+//                let buyingRate = rate.data.brands.wbc.portfolios.fx.products.usd.rates.usd.buyTC
+//                let sellingRate = rate.data.brands.wbc.portfolios.fx.products.usd.productID
+
 
         
             }
         })
-//        self.viewModel?.products.bind({ [weak self] in
-//            if let product = $0 {
-////                print(rate.data.brands.wbc.portfolios.fx.products.usd.productID)
-//                let p_id = product.usd.productID
-//                let buyingRate = product.usd.rates.usd.buyTC
-//                let sellingRate = product.usd.productID
-//                print("buying price is \(buyingRate)   Selling Price \(sellingRate)")
-//                self?.currencyFromLabel.text = "\(p_id)"
-//                self?.currencyToOutputLabel.text = "\(buyingRate)"
-//            }
-//        })
         
     }
     @IBAction func dropDownFromBtnAction(_ sender: UIButton) {
-//        if let products = viewModel?.products.value{
-//            print(products.allKey)
-//            dropDown.dataSource = products.allKeys
-//        }
-//        dropDown.dataSource = viewModel?.products.value?.allKeys
-        dropDown.dataSource = ["AU", "US", "NP", "NZ"]
+        if let products = viewModel?.rates.value?.data.brands.wbc.portfolios.fx.products{
+            print(products.allKeys)
+            dropDown.dataSource = products.allKeys
+        }
         dropDown.anchorView = sender
         dropDown.bottomOffset = CGPoint(x:0, y:sender.frame.size.height)
         dropDown.show()
         dropDown.selectionAction = {[weak self](index: Int, item: String) in
             guard let _ = self else{return}
 //            sender.setTitle(item, for: .normal)
+            print("selected code is \(item)")
+            self?.selectedItemCode = item
             self?.currencyFromLabel.text = item
         }
                                         
     }
     
     @IBAction func currencyConvertBtnAction(_ sender: Any) {
-        
+        let doubleInput = currencyFromInputField.text!.doubleValue
+        let currencyRate = viewModel?.getCurrencyRateWithCode(code: selectedItemCode ?? "USD")
+        let resultedValue = viewModel?.convertCurrency(valueToConvert: doubleInput, conversionRate: 20.0)
+        self.currencyToOutputLabel.text = "\(resultedValue!)"
         
     }
     

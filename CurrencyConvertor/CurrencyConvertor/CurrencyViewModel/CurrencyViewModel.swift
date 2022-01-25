@@ -7,11 +7,14 @@
 
 import Foundation
 import Alamofire
+import CoreImage
 protocol CurrencyViewModelProtocol {
     var alertMessage: Dynamic<AlertMessage> { get set }
     var isLoaderHidden: Dynamic<Bool> { get set }
     var rates: Dynamic<CurrencyModel.CurrencyRate?> { get set }
     
+    func convertCurrency(valueToConvert: Double, conversionRate: Double) -> Double
+    func getCurrencyRateWithCode(code: String) ->Double
     func getRates()
     func failTest()
 }
@@ -37,12 +40,14 @@ class APICurrencyViewModel: NSObject, CurrencyViewModelProtocol {
             self.isLoaderHidden.value = true
             switch res {
             case .success(let rate):
+                print(rate)
                 self.rates.value = rate
 //                self.products.value = rate.data.brands.wbc.portfolios.fx.products
 //                self.productList = rate.data.brands.wbc.portfolios.fx.products
 
                 break
             case .failure(let message):
+                print("error message")
                 self.alertMessage.value = message
                 break
             }
@@ -62,6 +67,18 @@ class APICurrencyViewModel: NSObject, CurrencyViewModelProtocol {
                 break
             }
         }
+        
+    }
+    // this will only get the rate value of the selected drop down country
+    func getCurrencyRateWithCode(code: String) ->Double{
+        let allKeys = self.rates.value?.data.brands.wbc.portfolios.fx.products.allKeys
+        
+        return 0.0
+    }
+    
+    func convertCurrency(valueToConvert: Double, conversionRate: Double) -> Double{
+        
+        return valueToConvert * conversionRate
         
     }
     

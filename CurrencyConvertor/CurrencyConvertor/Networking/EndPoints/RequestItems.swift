@@ -59,7 +59,7 @@ extension RequestItemsType: EndPointType {
         case .PostProducts:
             return ""
         case .fail:
-            return "fail"
+            return ""
         }
     }
     

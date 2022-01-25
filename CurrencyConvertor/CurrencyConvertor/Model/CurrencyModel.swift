@@ -10,7 +10,8 @@ import Foundation
 
 enum CurrencyModel{
 
-    // MARK: - Welcome
+
+    // MARK: - Rate
     struct CurrencyRate: Codable {
         let apiVersion: String
         let status: Int
@@ -152,7 +153,7 @@ enum CurrencyModel{
             case cnh = "CNH"
         }
         var allKeys: [String] {
-            CodingKeys.allCases.map { $0.stringValue }
+                CodingKeys.allCases.map { $0.stringValue }
         }
     }
 
@@ -203,13 +204,12 @@ enum CurrencyModel{
         case the20160901T080001841000 = "20160901T080001,84+10:00"
         case the20160901T085002111000 = "20160901T085002,11+10:00"
         case the20161011T151205921100 = "20161011T151205,92+11:00"
-        case the20220124T080807421100 = "20220124T080807,42+11:00"
-        case the20220124T080807431100 = "20220124T080807,43+11:00"
+        case the20220125T080908671100 = "20220125T080908,67+11:00"
     }
 
     enum Lastupdated: String, Codable {
         case the0310PM11Oct2016 = "03:10 PM 11 Oct 2016"
-        case the0801AM24Jan2022 = "08:01 AM 24 Jan 2022"
+        case the0801AM25Jan2022 = "08:01 AM 25 Jan 2022"
         case the0809AM01Sep2016 = "08:09 AM 01 Sep 2016"
     }
 
@@ -992,5 +992,6 @@ enum CurrencyModel{
             case zar = "ZAR"
         }
     }
+
 
 }
